@@ -1,6 +1,7 @@
 package org.jfr0st.configuration;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.DispatcherType;
@@ -29,6 +30,7 @@ public class SpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotationCo
     public void onStartup(ServletContext servletContext) throws ServletException {
         super.onStartup(servletContext);
         registerCharacterEncodingFilter(servletContext);
+        registrHiddenFilter(servletContext);
     }
 
     private void registerCharacterEncodingFilter(ServletContext aContext) {
@@ -38,5 +40,10 @@ public class SpringMvcDispatcherSerlvetIntitializer extends AbstractAnnotationCo
         characterEncodingFilter.setForceEncoding(true);
         FilterRegistration.Dynamic characterEncoding = aContext.addFilter("characterEncoding", characterEncodingFilter);
         characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
+    }
+
+    private void registrHiddenFilter(ServletContext aContext) {
+        aContext.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter())
+                .addMappingForUrlPatterns(null, true, "/*");
     }
 }

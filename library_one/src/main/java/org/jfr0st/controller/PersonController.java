@@ -4,12 +4,7 @@ import org.jfr0st.dao.PersonDao;
 import org.jfr0st.model.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/person")
@@ -22,18 +17,31 @@ public class PersonController {
     }
 
     @GetMapping
-    public String getAllPersonFromBase(Model model){
+    public String getAllPersonFromBase(Model model) {
         model.addAttribute("person", personDao.getAllPerson());
         return "person/all_person";
     }
+
+    @GetMapping("/show/{id}")
+    public String showPerson(Model model, @PathVariable int id) {
+        model.addAttribute("person", personDao.getPerson(id));
+        return "person/show";
+    }
+
     @GetMapping("/new")
-    public String addNewPerson(@ModelAttribute("person") Person person){
+    public String addNewPerson(@ModelAttribute("person") Person person) {
         return "person/new";
     }
 
     @PostMapping
-    public String savePerson(@ModelAttribute("person") Person person){
+    public String savePerson(@ModelAttribute("person") Person person) {
         personDao.create(person);
+        return "redirect:/person";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePerson(@PathVariable("id") int id) {
+        personDao.delete(id);
         return "redirect:/person";
     }
 

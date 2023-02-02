@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Person</title>
+</head>
+<body>
+
+<p th:text="'Имя: ' + ${person.getPerson_fio()}"/>
+<p th:text="'Возраст: ' + ${person.getAge()}"/>
+<hr>
+<form th:method="DELETE" th:action="@{/person/{id}(id=${person.getPerson_id()})}">
+    <input type="submit" value="Delete">
+</form>
+</body>
+</html>
