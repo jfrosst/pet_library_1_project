@@ -29,7 +29,13 @@ public class PersonDao {
                 person.getPerson_fio(), person.getAge());
     }
 
+    public void update(Person person, int id) {
+        jdbcTemplate.update("UPDATE Person SET person_fio=?, age=? WHERE person_id=?",
+                person.getPerson_fio(), person.getAge(), id);
+    }
+
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Person WHERE person_id=?", id);
     }
+
 }

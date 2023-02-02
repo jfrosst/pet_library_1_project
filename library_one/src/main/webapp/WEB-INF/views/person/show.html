@@ -9,6 +9,10 @@
 <p th:text="'Имя: ' + ${person.getPerson_fio()}"/>
 <p th:text="'Возраст: ' + ${person.getAge()}"/>
 <hr>
+<form th:method="GET" th:action="@{/person/edit/{id}(id=${person.getPerson_id()})}">
+    <input type="submit" value="Update">
+</form>
+<br>
 <form th:method="DELETE" th:action="@{/person/{id}(id=${person.getPerson_id()})}">
     <input type="submit" value="Delete">
 </form>
