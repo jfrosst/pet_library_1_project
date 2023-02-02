@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library person</title>
+</head>
+<body>
+
+<h1>Persons:</h1>
+<div th:each="p : ${person}">
+    <a th:text="${p.getPerson_fio()}">Value</a>
+</div>
+</body>
+</html>
