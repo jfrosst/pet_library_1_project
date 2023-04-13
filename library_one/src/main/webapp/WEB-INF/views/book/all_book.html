@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All book</title>
+</head>
+<body>
+
+<h1>Books:</h1>
+<div th:each="b : ${book}">
+    <a th:text="${b.getTitle()}">Value</a>
+</div>
+
+</body>
+</html>
+
+<!--<h1>Persons:</h1>-->
+<!--<div th:each="p : ${person}">-->
+<!--  <a th:href="@{/person/show/{id}(id=${p.getPerson_id()})}" th:text="${p.getPerson_fio()}">Value</a>-->
+<!--</div>-->
+
+
+
+<!--<br/>-->
+<!--<hr/>-->
+<!--<form method="get" action="/person/new">-->
+<!--  <input type="submit" value="Add new person">-->
+<!--</form>-->
+<!--<br/>-->
+<!--<form method="get" action="http://localhost:8080">-->
+<!--  <input type="submit" value="Back to Library">-->
+<!--</form>-->

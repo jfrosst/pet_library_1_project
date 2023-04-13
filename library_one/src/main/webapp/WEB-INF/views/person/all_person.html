@@ -10,5 +10,15 @@
 <div th:each="p : ${person}">
     <a th:href="@{/person/show/{id}(id=${p.getPerson_id()})}" th:text="${p.getPerson_fio()}">Value</a>
 </div>
+<br/>
+<hr/>
+<form method="get" action="/person/new">
+    <input type="submit" value="Add new person">
+</form>
+<br/>
+<form method="get" action="http://localhost:8080">
+    <input type="submit" value="Back to Library">
+</form>
+
 </body>
 </html>
