@@ -8,8 +8,21 @@
 
 <h1>Books:</h1>
 <div th:each="b : ${book}">
-    <a th:text="${b.getTitle()}">Value</a>
+    <a th:text="${b.getTitle()}">Value</a>,
+    <a th:text="${b.getAuthor()}">Value</a>,
+    <a th:text="${b.getW_year()}">Value</a>
 </div>
+<br>
+<hr>
+<br>
+<form method="GET" action="http://localhost:8080/book/new">
+    <input type="submit" value="Добавить новую книгу">
+</form>
+<br>
+
+<form method="GET" action="http://localhost:8080/">
+    <input type="submit" value="Back to Library">
+</form>
 
 </body>
 </html>

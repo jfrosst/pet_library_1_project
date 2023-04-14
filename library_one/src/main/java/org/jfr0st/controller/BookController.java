@@ -26,7 +26,7 @@ public class BookController {
         return "book/all_book";
     }
 
-    @RequestMapping("/new")
+    @GetMapping("/new")
     public String addNewBook(@ModelAttribute("book") Book book) {
         return "book/new";
     }
@@ -36,5 +36,7 @@ public class BookController {
         bookDao.create(book);
         return "redirect:/book";
     }
+
+
 
 }
